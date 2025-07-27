@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html lang="ka">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
   <title>Customer Stay</title>
   <style>
+    * {
+      font-family: Arial, sans-serif;
+    }
+
     body {
       background-color: black;
       color: white;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
     }
 
     .container {
+      margin: 1rem 1.8rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      ]
+    }
+
+    .header {
+      overflow: hidden;
+    }
+
+    .header-right {
+      float: right;
+      color: gray;
+    }
+
+    .header-right-child {
+      display: inline-block;
     }
 
     form {
@@ -30,98 +46,143 @@
 
     h1 {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 1.7rem;
+      margin-top: 1rem;
+      font-size: 3rem;
     }
 
     .question {
-      margin-bottom: 10px;
+      font-size: 1.1rem;
+      margin-bottom: 1.4rem;
       width: 100%;
+    }
+
+    .quest {
+      font-size: 1.4rem;
+      font-weight: bold;
+      padding-bottom: 0.2rem;
     }
 
     select {
       width: 100%;
-      padding: 5px;
+      padding: 0.4rem;
     }
 
     label {
       display: block;
-      margin-top: 5px;
+    }
+
+    .choice {
+      margin-top: 0.3rem;
+      font-size: 1.2rem;
+    }
+
+    a {
+      color: gray;
+      font-size: 0.8rem;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0.3rem;
     }
 
     button {
-      padding: 10px 20px;
-      margin-top: 20px;
-      background-color: #444;
-      color: white;
+      padding: 1rem;
+      margin-top: 1.3rem;
+      background-color: white;
+      color: black;
       border: none;
-      width: 100%;
-      font-size: 16px;
+      width: 80%;
+      font-size: 1.1rem;
+      font-weight: bold;
       cursor: pointer;
+      border-radius: 1rem;
+    }
+
+    button:active {
+      background-color: lightgray;
     }
 
     button:disabled {
-      background-color: #888;
+      background-color: gray;
       cursor: not-allowed;
+    }
+
+    .fa-sun {
+      margin-right: 0.7rem;
     }
   </style>
 </head>
+
 <body>
-
-<div class="container">
-  <h1>Customer Stay</h1>
-
-  <form id="questionnaire">
-    <!-- 1. Your Nation -->
-    <div class="question">
-      <label for="nation">თქვენი ქვეყანა:</label>
-      <select id="nation" required>
-        <option value="">აირჩიეთ</option>
-        <option value="Georgia">საქართველო</option>
-        <option value="Armenia">სომხეთი</option>
-        <option value="Azerbaijan">აზერბაიჯანი</option>
-        <option value="Turkey">თურქეთი</option>
-      </select>
+  <div class="header">
+    <div class="header-right">
+      <i class="fa fa-sun"></i>
+      <label class="header-right-child">KA</label>
+      <i class="fa-solid fa-chevron-down"></i>
     </div>
+  </div>
 
-    <!-- 2. Interests -->
-    <div class="question">
-      <label>აირჩიეთ თქვენი ინტერესები:</label>
-      <label><input type="checkbox" name="interest" value="მაღალი">ექსტრემი</label>
-      <label><input type="checkbox" name="interest" value="ინტელექტუალური">გართობა</label>
-      <label><input type="checkbox" name="interest" value="საშუალო">კულტურა და შემეცნება</label>
-      <label><input type="checkbox" name="interest" value="კულტურული">ისტორია</label>
-    </div>
+  <div class="container">
+    <h1>CUSTOM STAY</h1>
 
-    <!-- 3. Most important -->
-    <div class="question">
-      <label>რა არის თქვენი პრიორიტეტი:</label>
-      <label><input type="radio" name="importance" value="საჭმელი" required>საჭმელი</label>
-      <label><input type="radio" name="importance" value="სათამაშო" required>გართობა</label>
-      <label><input type="radio" name="importance" value="განათლება" required>შემეცნება</label>
-    </div>
+    <form id="questionnaire">
+      <!-- 1. Your Nation -->
+      <div class="question">
+        <label for="nation" class="quest">თქვენი ქვეყანა:</label>
+        <select id="nation" required>
+          <option value="">აირჩიეთ</option>
+          <option value="Georgia">საქართველო</option>
+          <option value="Armenia">სომხეთი</option>
+          <option value="Azerbaijan">აზერბაიჯანი</option>
+          <option value="Turkey">თურქეთი</option>
+        </select>
+      </div>
 
-    <button type="button" id="submitBtn" disabled>დავასრულე</button>
-  </form>
-</div>
+      <!-- 2. Interests -->
+      <div class="question">
+        <label class="quest">აირჩიეთ თქვენი ინტერესები:</label>
+        <label class="choice"><input type="checkbox" name="interest" value="მაღალი">ექსტრემი</label>
+        <label class="choice"><input type="checkbox" name="interest" value="ინტელექტუალური">გართობა</label>
+        <label class="choice"><input type="checkbox" name="interest" value="საშუალო">კულტურა და შემეცნება</label>
+        <label class="choice"><input type="checkbox" name="interest" value="კულტურული">ისტორია</label>
+      </div>
 
-<script>
-  const select = document.getElementById('nation');
-  const btn = document.getElementById('submitBtn');
+      <!-- 3. Most important -->
+      <div class="question">
+        <label class="quest">რა არის თქვენი პრიორიტეტი:</label>
+        <label class="choice"><input type="radio" name="importance" value="საჭმელი" required>საჭმელი</label>
+        <label class="choice"><input type="radio" name="importance" value="სათამაშო" required>გართობა</label>
+        <label class="choice"><input type="radio" name="importance" value="განათლება" required>შემეცნება</label>
+      </div>
 
-  // Enable button only if a country is selected
-  select.addEventListener('change', () => {
-    btn.disabled = select.value === "";
-  });
+      <button type="button" id="submitBtn" disabled>დავასრულე</button>
+    </form>
+  </div>
+  <footer>
+    <a href="">ჩვენს შესახებ</a>
+  </footer>
 
-  btn.addEventListener('click', () => {
-    const importance = document.querySelector('input[name="importance"]:checked');
-    if (!select.value || !importance) {
-      alert('გთხოვთ შეავსოთ ყველა კითხვა!');
-      return;
-    }
-    window.location.href = 'results.html';
-  });
-</script>
+  <script>
+    const select = document.getElementById('nation');
+    const btn = document.getElementById('submitBtn');
+
+    // Enable button only if a country is selected
+    select.addEventListener('change', () => {
+      btn.disabled = select.value === "";
+    });
+
+    btn.addEventListener('click', () => {
+      const importance = document.querySelector('input[name="importance"]:checked');
+      if (!select.value || !importance) {
+        alert('გთხოვთ შეავსოთ ყველა კითხვა!');
+        return;
+      }
+      window.location.href = 'results-2.html';
+    });
+  </script>
 
 </body>
+
 </html>
