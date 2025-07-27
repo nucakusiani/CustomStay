@@ -47,15 +47,14 @@
 
     h1 {
       text-align: center;
-      margin-top: 0;
-      margin-bottom: 0;
-      font-size: min(5vw, 2.3rem);
+      margin-top: 3rem;
+      margin-bottom: 1.4rem;
+      font-size: min(6.2vw, 3.1rem);
     }
 
-    hr {
-      border-top: 1px solid gray;
-      width: min(38vw, 32ch);
-      margin-bottom: 0.8rem;
+    h3 {
+      text-align: left;
+      font-size: min(3.3vw, 1.6rem);
     }
 
     label {
@@ -67,63 +66,57 @@
       font-size: 0.8rem;
     }
 
+    .time {
+      margin-right: min(38vw, 15.7rem);
+    }
+
+    .date {
+      margin-right: min(21vw, 9.7rem);
+    }
+
+    .price {
+      margin-right: min(38vw, 16rem);
+    }
+
+
+    .item-child {
+      margin-bottom: 0;
+      margin-top: 0.2rem;
+      font-size: min(3.4vw, 1.3rem);
+      display: inline-block;
+    }
+
+    #time {
+      color: #FC2D2D
+    }
+
+    #date {
+      color: #35B5F9
+    }
+
+    #price {
+      color: #00BA60
+    }
+
+
     footer {
       position: absolute;
       bottom: 0.3rem;
     }
 
-    .item {
-      display: flex;
-      width: min(80%, 68ch);
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 2rem;
-    }
-
-    .item-child {
-      flex: 1;
-      margin-left: 6vw;
-      font-size: min(3.4vw, 1.7rem);
-    }
-
-    #wyaltubo {
-      margin-bottom: 3px;
-      font-weight: 700;
-      color: cornflowerblue
-    }
-
-    #wyaltubo:visited {
-      color: violet
-    }
-
-    #wyaltubo-fasi {
-      margin-top: 0;
-      margin-bottom: 3px;
-      font-size: min(2.8vw, 1.4rem);
-      color: #00BA60;
-    }
-
-    #wyaltubo-item {
-      margin-left: 0;
-    }
-
-
-    img.item-child {
-      min-width: 3rem;
-      width: 12rem;
-      max-width: 12rem;
-      margin-right: 6vw;
-      margin-left: 0;
+    img {
+      width: min(60vw, 24rem);
       border-radius: 12px;
+      margin-bottom: 1rem;
     }
 
     button {
       padding: 1rem;
-      margin-top: 1.3rem;
+      margin-top: 2.2rem;
       background-color: white;
       color: black;
       border: none;
-      width: 80%;
+      width: min(60%, 12rem);
       font-size: 1.1rem;
       font-weight: bold;
       cursor: pointer;
@@ -156,27 +149,21 @@
   </div>
 
   <div class="container">
-    <h1>სამზარეულო</h1>
-    <hr>
-    <div class="item">
-      <h3 class="item-child">ხინკალი</h3>
-      <img class="item-child" src="res/xinkali.webp">
+    <h1>წყალტუბო</h1>
+    <img src="res/wyaltubo.webp">
+    <div class="time">
+      <h3 class="item-child">დრო:</h3>
+      <h3 class="item-child" id="time">12:00</h3>
     </div>
-    <h1>აქტივობები</h1>
-    <hr>
-    <div class="item">
-      <h3 class="item-child">ჯომარდობა</h3>
-      <img class="item-child" src="res/jomardoba.webp">
+    <div class="date">
+      <h3 class="item-child">თარიღი:</h3>
+      <h3 class="item-child" id="date">15 ივლისი</h3>
     </div>
-    <h1>ტურები</h1>
-    <hr>
-    <div class="item">
-      <div class="item-child" id="wyaltubo-item">
-        <a class="item-child" id="wyaltubo" href="wyaltubo.html">წყალტუბო</a>
-        <h3 class="item-child" id="wyaltubo-fasi">123$</h3>
-      </div>
-      <img class="item-child" src="res/wyaltubo.webp">
+    <div class="price">
+      <h3 class="item-child">ფასი:</h3>
+      <h3 class="item-child" id="price">123$</h3>
     </div>
+    <button type="button">დაჯავშნა</button>
   </div>
 
   <footer>
