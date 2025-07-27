@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Customer Stay</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      ]
+    }
+
+    form {
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    select {
+      width: 100%;
+      padding: 5px;
+    }
+
+    label {
+      display: block;
+      margin-top: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #444;
+      color: white;
+      border: none;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      background-color: #888;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Customer Stay</h1>
+
+  <form id="questionnaire">
+    <!-- 1. Your Nation -->
+    <div class="question">
+      <label for="nation">თქვენი ქვეყანა:</label>
+      <select id="nation" required>
+        <option value="">აირჩიეთ</option>
+        <option value="Georgia">საქართველო</option>
+        <option value="Armenia">სომხეთი</option>
+        <option value="Azerbaijan">აზერბაიჯანი</option>
+        <option value="Turkey">თურქეთი</option>
+      </select>
+    </div>
+
+    <!-- 2. Interests -->
+    <div class="question">
+      <label>აირჩიეთ თქვენი ინტერესები:</label>
+      <label><input type="checkbox" name="interest" value="მაღალი">ექსტრემი</label>
+      <label><input type="checkbox" name="interest" value="ინტელექტუალური">გართობა</label>
+      <label><input type="checkbox" name="interest" value="საშუალო">კულტურა და შემეცნება</label>
+      <label><input type="checkbox" name="interest" value="კულტურული">ისტორია</label>
+    </div>
+
+    <!-- 3. Most important -->
+    <div class="question">
+      <label>რა არის თქვენი პრიორიტეტი:</label>
+      <label><input type="radio" name="importance" value="საჭმელი" required>საჭმელი</label>
+      <label><input type="radio" name="importance" value="სათამაშო" required>გართობა</label>
+      <label><input type="radio" name="importance" value="განათლება" required>შემეცნება</label>
+    </div>
+
+    <button type="button" id="submitBtn" disabled>დავასრულე</button>
+  </form>
+</div>
+
+<script>
+  const select = document.getElementById('nation');
+  const btn = document.getElementById('submitBtn');
+
+  // Enable button only if a country is selected
+  select.addEventListener('change', () => {
+    btn.disabled = select.value === "";
+  });
+
+  btn.addEventListener('click', () => {
+    const importance = document.querySelector('input[name="importance"]:checked');
+    if (!select.value || !importance) {
+      alert('გთხოვთ შეავსოთ ყველა კითხვა!');
+      return;
+    }
+    window.location.href = 'results.html';
+  });
+</script>
+
+</body>
+</html>

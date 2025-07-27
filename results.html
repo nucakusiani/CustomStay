@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ტურები</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 600px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .route {
+      border: 2px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      background-color: #222;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .route.selected {
+      background-color: #555;
+      border-color: #00cc66;
+    }
+
+    .route-info {
+      margin-top: 10px;
+    }
+
+    #completeBtn {
+      display: block;
+      margin: 30px auto 10px;
+      padding: 1px;
+      background-color: #00cc66;
+      color: black;
+      font-size: 16px;
+      border: none;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+     
+    }
+
+    #summary {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    #paymentBtn {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      
+      
+    }
+
+    #paymentBtn:hover {
+      background-color: #666;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>ხელმისაწვდომი ტურები</h2>
+  
+  <div class="route" data-price="100">
+    <div style="text-align:center;">ქუთაისი - წყალტუბო</div>
+    <div class="route-info">
+      დრო: 15:00საათი<br>
+      ფასი: 100 ლარი
+    </div>
+  </div>
+  
+  <div class="route" data-price="150">
+    <div style="text-align:center;">თბილისი - გუდაური</div>
+    <div class="route-info">
+      დრო: 16:00 საათი<br>
+      ფასი: 150 ლარი
+    </div>
+  </div>
+  
+  <div class="route" data-price="120">
+    <div style="text-align:center;">ბათუმი - ქობულეთი</div>
+    <div class="route-info">
+      დრო: 15:00 საათი<br>
+      ფასი: 120 ლარი
+    </div>
+  </div>
+
+  <button id="completeBtn">დავასრულე</button>
+
+  <div id="summary" style="display:none;">
+    <div id="total">ჯამი: 0 ლარი</div>
+    <button id="paymentBtn">გადახდის მეთოდები</button>
+  </div>
+</div>
+
+<script>
+  const routes = document.querySelectorAll('.route');
+  const completeBtn = document.getElementById('completeBtn');
+  const summary = document.getElementById('summary');
+  const totalDisplay = document.getElementById('total');
+
+  let selectedPrices = [];
+
+  routes.forEach(route => {
+    route.addEventListener('click', () => {
+      const price = parseInt(route.getAttribute('data-price'), 10);
+
+      if (route.classList.contains('selected')) {
+        route.classList.remove('selected');
+        selectedPrices = selectedPrices.filter(p => p !== price);
+      } else {
+        route.classList.add('selected');
+        selectedPrices.push(price);
+      }
+    });
+  });
+
+  completeBtn.addEventListener('click', () => {
+    const sum = selectedPrices.reduce((acc, curr) => acc + curr, 0);
+    totalDisplay.textContent = `ჯამი: ${sum} ლარი`;
+    summary.style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
